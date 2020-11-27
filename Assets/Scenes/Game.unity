@@ -157,6 +157,7 @@ MonoBehaviour:
   - {fileID: 8514827453163303418, guid: a7abfd00d7edf13468f62b22425a41e0, type: 3}
   - {fileID: 3764535957130052256, guid: 181f4e1ab4552bb44bf18c57084e79e1, type: 3}
   PooledObjects: 30
+  SpawnRate: 5
 --- !u!65 &260057263
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -440,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 0
-  Points: 0
+  Score: 0
   Speed: 128
 --- !u!136 &1060183840
 CapsuleCollider:

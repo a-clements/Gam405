@@ -5,5 +5,5 @@ using UnityEngine;
 public class PlayerAttributes : MonoBehaviour
 {
     public int Level;
-    public int Points;
+    public int Score;
 }
