@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &260057262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   GameObjects:
   - {fileID: 8514827453163303418, guid: a7abfd00d7edf13468f62b22425a41e0, type: 3}
   - {fileID: 3764535957130052256, guid: 181f4e1ab4552bb44bf18c57084e79e1, type: 3}
+  PooledObjects: 30
 --- !u!65 &260057263
 BoxCollider:
   m_ObjectHideFlags: 0

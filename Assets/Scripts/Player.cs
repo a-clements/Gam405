@@ -7,6 +7,7 @@ public class Player : PlayerAttributes
     private Rigidbody rb;
     private Transform ThisTransform;
     [SerializeField] float Speed;
+    private Vector3 Position;
 
     private void Start()
     {
@@ -28,12 +29,23 @@ public class Player : PlayerAttributes
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(Vector3.up * Speed * Time.deltaTime);
+            rb.AddForce(ThisTransform.up * Speed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(Vector3.up * -Speed * Time.deltaTime);
+            rb.AddForce(ThisTransform.up * -Speed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerExit(Collider TriggerInfo)
+    {
+        if(TriggerInfo.name == "Spawner")
+        {
+            Position = new Vector3(ThisTransform.position.x, ThisTransform.position.y, ThisTransform.position.z);
+            Position.x *= -1.0f;
+            Position.y *= -1.0f;
+            ThisTransform.position = Position;
         }
     }
 }
