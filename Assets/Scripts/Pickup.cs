@@ -23,6 +23,7 @@ public class Pickup : ItemAttributes
         }
 
         PlayerTransform = Player.gameObject.transform;
+
         rb.AddForce((PlayerTransform.position - ThisTransform.position) * (Player.Level * Speed), ForceMode.Force);
     }
 
@@ -43,7 +44,7 @@ public class Pickup : ItemAttributes
         if (TriggerInfo.tag == "Player")
         {
             rb.velocity = Vector3.zero;
-            //PlayerTransform.position = Vector3.zero;
+            PlayerTransform.position = Vector3.zero;
             ThisTransform.gameObject.SetActive(false);
         }
     }
@@ -53,7 +54,6 @@ public class Pickup : ItemAttributes
         if (TriggerInfo.tag == "Spawner")
         {
             rb.velocity = Vector3.zero;
-            PlayerTransform.position = Vector3.zero;
             ThisTransform.gameObject.SetActive(false);
         }
     }
