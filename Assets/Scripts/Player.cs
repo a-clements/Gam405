@@ -6,45 +6,66 @@ public class Player : PlayerAttributes
 {
     private Rigidbody rb;
     private Transform ThisTransform;
-    [SerializeField] float Speed;
     private Vector3 Position;
+    [SerializeField] float PlayerSpeed = 128.0F;
+    private BulletSpawn BulletSpawn;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         ThisTransform = GetComponent<Transform>();
+        BulletSpawn = FindObjectOfType<BulletSpawn>();
     }
 
     private void Update()
     {
         if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A))
         {
-            rb.AddTorque(ThisTransform.forward * Speed * Time.deltaTime);
+            rb.AddTorque(ThisTransform.forward * PlayerSpeed * Time.deltaTime);
         }
 
         if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.D))
         {
-            rb.AddTorque(-ThisTransform.forward * Speed * Time.deltaTime);
+            rb.AddTorque(-ThisTransform.forward * PlayerSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(ThisTransform.up * Speed * Time.deltaTime);
+            if(rb.velocity.y < 10.0f)
+            {
+                rb.AddForce(ThisTransform.up * PlayerSpeed * Time.deltaTime, ForceMode.Force);
+            }
         }
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(ThisTransform.up * -Speed * Time.deltaTime);
+            if (rb.velocity.y > -10.0f)
+            {
+                rb.AddForce(ThisTransform.up * -PlayerSpeed * Time.deltaTime, ForceMode.Force);
+            }
+        }
+
+        if(Input.GetKey(KeyCode.Space))
+        {
+            BulletSpawn.Shoot();
         }
     }
 
     private void OnTriggerExit(Collider TriggerInfo)
     {
-        if(TriggerInfo.name == "Spawner")
+        if(TriggerInfo.tag == "Spawner")
         {
-            Position = new Vector3(ThisTransform.position.x, ThisTransform.position.y, ThisTransform.position.z);
-            Position.x *= -1.0f;
-            Position.y *= -1.0f;
+            Position = ThisTransform.position;
+
+            if(Position.y >= Spawner.MaxY || Position.y <= Spawner.MinY)
+            {
+                Position.y *= -1.0f;
+            }
+            else if (Position.x >= Spawner.MaxX || Position.x <= Spawner.MinX)
+            {
+                Position.x *= -1.0f;
+            }
+
             ThisTransform.position = Position;
         }
     }

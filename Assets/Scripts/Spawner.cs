@@ -10,10 +10,10 @@ public class Spawner : MonoBehaviour
     public float SpawnRate = 5.0F;
 
     private float NextSpawn = 1.0F;
-    private int MinX;
-    private int MaxX;
-    private int MinY;
-    private int MaxY;
+    public static int MinX;
+    public static int MaxX;
+    public static int MinY;
+    public static int MaxY;
 
     List<GameObject> ObjectList = new List<GameObject>();
 
@@ -24,10 +24,10 @@ public class Spawner : MonoBehaviour
         int j;
         GameObject obj;
 
-        MinX = (int)-this.transform.localScale.x;
-        MaxX = (int)this.transform.localScale.x;
-        MinY = (int)-this.transform.localScale.y;
-        MaxY = (int)this.transform.localScale.y;
+        MinX = (int)-this.transform.localScale.x / 2;
+        MaxX = (int)this.transform.localScale.x / 2;
+        MinY = (int)-this.transform.localScale.y / 2;
+        MaxY = (int)this.transform.localScale.y / 2;
 
         for (i = 0; i < PooledObjects; i++)
         {
@@ -67,26 +67,18 @@ public class Spawner : MonoBehaviour
                 switch (j)
                 {
                     case 0:
-                        //ObjectList[i].transform.position = new Vector3(Random.Range(MinX, MaxX), MaxY, transform.position.z);
-                        //ObjectList[i].SetActive(true);
                         ActiveObject(i, Random.Range(MinX, MaxX), MaxY);
                         break;
 
                     case 1:
-                        //ObjectList[i].transform.position = new Vector3(Random.Range(MinX, MaxX), MinY, transform.position.z);
-                        //ObjectList[i].SetActive(true);
                         ActiveObject(i, Random.Range(MinX, MaxX), MinY);
                         break;
 
                     case 2:
-                        //ObjectList[i].transform.position = new Vector3(MaxX, Random.Range(MinY, MaxY), transform.position.z);
-                        //ObjectList[i].SetActive(true);
                         ActiveObject(i, MaxX, Random.Range(MinY, MaxY));
                         break;
 
                     case 3:
-                        //ObjectList[i].transform.position = new Vector3(MinX, Random.Range(MinY, MaxY), transform.position.z);
-                        //ObjectList[i].SetActive(true);
                         ActiveObject(i, MinX, Random.Range(MinY, MaxY));
                         break;
                 }
@@ -96,7 +88,7 @@ public class Spawner : MonoBehaviour
 
     void ActiveObject(int i, int X, int Y)
     {
-        ObjectList[i].transform.position = new Vector3(X, Y, transform.position.z);
+        ObjectList[i].transform.position = new Vector3(X, Y, this.transform.position.z);
         ObjectList[i].SetActive(true);
     }
 }
