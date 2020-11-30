@@ -4,27 +4,32 @@ using UnityEngine;
 
 public class Player : PlayerAttributes
 {
-    private Rigidbody rb;
+    public Rigidbody rb;
     private Transform ThisTransform;
     private Vector3 Position;
     [SerializeField] float PlayerSpeed = 128.0F;
     private BulletSpawn BulletSpawn;
+    public InGameUI UI;
+    [SerializeField] private float RespawnTimer = 5.0F;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         ThisTransform = GetComponent<Transform>();
         BulletSpawn = FindObjectOfType<BulletSpawn>();
+        UI = FindObjectOfType<InGameUI>();
+        UI.NextLevel.text = NextLevel.ToString();
+        UI.Level.text = Level.ToString();
     }
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             rb.AddTorque(ThisTransform.forward * PlayerSpeed * Time.deltaTime);
         }
 
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             rb.AddTorque(-ThisTransform.forward * PlayerSpeed * Time.deltaTime);
         }
@@ -68,5 +73,19 @@ public class Player : PlayerAttributes
 
             ThisTransform.position = Position;
         }
+    }
+
+    public IEnumerator Respawn()
+    {
+        ThisTransform.rotation = Quaternion.identity;
+        ThisTransform.localRotation = Quaternion.identity;
+        ThisTransform.position = Vector3.zero;
+        rb.velocity = Vector3.zero;
+        
+        yield return new WaitForSeconds(RespawnTimer);
+
+        ThisTransform.gameObject.SetActive(true);
+
+        yield return null;
     }
 }

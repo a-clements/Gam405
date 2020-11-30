@@ -5,7 +5,6 @@ using UnityEngine;
 public class Pickup : ItemAttributes
 {
     private Player Player;
-    private Transform PlayerTransform;
     private Rigidbody rb;
     private Transform ThisTransform;
 
@@ -22,9 +21,7 @@ public class Pickup : ItemAttributes
             Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
 
-        PlayerTransform = Player.gameObject.transform;
-
-        rb.AddForce((PlayerTransform.position - ThisTransform.position) * (Player.Level * Speed), ForceMode.Force);
+        rb.AddForce((Player.gameObject.transform.position - ThisTransform.position) * (Player.Level * Speed), ForceMode.Force);
     }
 
     private void OnTriggerEnter(Collider TriggerInfo)
@@ -32,20 +29,23 @@ public class Pickup : ItemAttributes
         if(TriggerInfo.tag == "Bullet")
         {
             Player.Score += PointValue;
+            Player.UI.Score.text = Player.Score.ToString();
 
             if (Player.Score >= Player.NextLevel)
             {
                 Player.Level += 1;
+                Player.UI.Level.text = Player.Level.ToString();
 
                 Player.NextLevel = Player.NextLevel * Player.Level;
+                Player.UI.NextLevel.text = Player.NextLevel.ToString();
             }
         }
 
         if (TriggerInfo.tag == "Player")
         {
-            rb.velocity = Vector3.zero;
-            PlayerTransform.position = Vector3.zero;
-            ThisTransform.gameObject.SetActive(false);
+            Player.gameObject.SetActive(false);
+            StartCoroutine(Player.Respawn());
+            //ThisTransform.gameObject.SetActive(false);
         }
     }
 
