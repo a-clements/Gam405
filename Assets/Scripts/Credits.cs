@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Credits : CreditsAttributes
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Text Name;
+    [SerializeField] private Text ProgrammerName;
+    [SerializeField] private Text ArtistName;
+    [SerializeField] private Text AudioName;
+    [SerializeField] private Button CloseButton;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Name.text = GameName;
+        ProgrammerName.text = Programmer;
+        ArtistName.text = Art;
+        AudioName.text = Audio;
     }
 }

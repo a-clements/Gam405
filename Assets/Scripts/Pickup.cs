@@ -45,7 +45,7 @@ public class Pickup : ItemAttributes
         {
             Player.gameObject.SetActive(false);
             StartCoroutine(Player.Respawn());
-            //ThisTransform.gameObject.SetActive(false);
+            ThisTransform.gameObject.SetActive(false);
         }
     }
 
