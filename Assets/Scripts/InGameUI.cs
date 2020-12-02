@@ -11,4 +11,5 @@ public class InGameUI: MonoBehaviour
     public Text Score;
     public Text NextLevel;
     public Text Level;
+    public Text Lives;
 }

@@ -10,4 +10,5 @@ public class PlayerAttributes : MonoBehaviour
     public int Level;
     public int NextLevel;
     public int Score;
+    public int Lives;
 }

@@ -76,6 +76,9 @@ public class Item: ItemAttributes
                     ThisTransform.gameObject.GetComponent<BoxCollider>().enabled = false;
                 }
 
+                Player.Lives -= 1;
+                Player.UI.Lives.text = Player.Lives.ToString();
+
                 StartCoroutine(Player.Respawn());
                 break;
         }

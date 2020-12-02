@@ -16,11 +16,11 @@ public class ButtonEvents : MonoBehaviour, IPointerClickHandler
         switch(eventData.selectedObject.name)
         {
             case "Close":
-                SceneManager.LoadSceneAsync("MainMenu");
+                SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
                 break;
 
             case "Play":
-                SceneManager.LoadSceneAsync("Game");
+                SceneManager.LoadSceneAsync("Game", LoadSceneMode.Single);
                 break;
 
             case "Exit":
@@ -34,7 +34,7 @@ public class ButtonEvents : MonoBehaviour, IPointerClickHandler
                 break;
 
             case "Credits":
-                SceneManager.LoadSceneAsync("Credits");
+                SceneManager.LoadSceneAsync("Credits", LoadSceneMode.Single);
                 break;
         }
     }

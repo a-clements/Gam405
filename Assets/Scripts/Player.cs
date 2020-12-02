@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : PlayerAttributes
 {
@@ -17,6 +18,12 @@ public class Player : PlayerAttributes
     public BulletSpawn BulletSpawn;
     public InGameUI UI;
     [SerializeField] private float RespawnTimer = 1.0F;
+    [SerializeField] private GameObject GameOver;
+
+    private void OnEnable()
+    {
+        Lives = 3;
+    }
 
     private void Start()
     {
@@ -26,6 +33,8 @@ public class Player : PlayerAttributes
         UI = FindObjectOfType<InGameUI>();
         UI.NextLevel.text = NextLevel.ToString();
         UI.Level.text = Level.ToString();
+        UI.Lives.text = Lives.ToString();
+        UI.Score.text = Score.ToString();
     }
 
     private void OnTriggerExit(Collider TriggerInfo)
@@ -55,11 +64,21 @@ public class Player : PlayerAttributes
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        yield return new WaitForSeconds(RespawnTimer);
+        if(Lives > 0)
+        {
+            yield return new WaitForSeconds(RespawnTimer);
 
-        ThisTransform.gameObject.GetComponent<MeshRenderer>().enabled = true;
-        ThisTransform.gameObject.GetComponent<CapsuleCollider>().enabled = true;
-        ThisTransform.gameObject.GetComponent<PlayerMove>().enabled = true;
+            ThisTransform.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            ThisTransform.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+            ThisTransform.gameObject.GetComponent<PlayerMove>().enabled = true;
+        }
+
+        else
+        {
+            GameOver.SetActive(true);
+            yield return new WaitForSeconds(RespawnTimer);
+            SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+        }
 
         yield return null;
     }
