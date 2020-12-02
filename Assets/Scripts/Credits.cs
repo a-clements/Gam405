@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Credits : CreditsAttributes
 {
+    /// <summary>
+    /// This class inherits from the CreditsAttributes class. In this class I am setting the text of Text Objects from the attributes in the CreditsAttributes class.
+    /// </summary>
     [SerializeField] private Text Name;
     [SerializeField] private Text ProgrammerName;
     [SerializeField] private Text ArtistName;

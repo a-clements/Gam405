@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    /// <summary>
+    /// This script controls the spawning of items. the bounds of the spawn area are defined by the localScale divided by 2. This script also creates an object pool of
+    /// objects to spawn. Objects will spawn based on a timer and a spawn rate. These variables are defined at design time. Once the Spawn function is called, a random
+    ///  value between 0 and the lenght of the object pool is generated. This value is used to define which specific object from the the list will spawn.
+    ///  A second value is generated and used as an input to a function called ActiveObject to determine where the object will spawn from. Within the ActiveObject function
+    ///  the collider for the active object is enabled.
+    /// </summary>
     [SerializeField] private GameObject[] GameObjects;
     [SerializeField] private int PooledObjects = 1;
 
@@ -39,11 +46,6 @@ public class Spawner : MonoBehaviour
             ObjectList.Add(obj);
             ObjectList[i].SetActive(false);
         }
-    }
-
-    void Start()
-    {
-        
     }
 
     void Update()
@@ -89,6 +91,19 @@ public class Spawner : MonoBehaviour
     void ActiveObject(int i, int X, int Y)
     {
         ObjectList[i].transform.position = new Vector3(X, Y, this.transform.position.z);
+
+        BoxCollider Box = ObjectList[i].transform.gameObject.GetComponent<BoxCollider>();
+
+        if (Box == null)
+        {
+            ObjectList[i].transform.gameObject.GetComponent<SphereCollider>().enabled = true;
+        }
+
+        else
+        {
+            ObjectList[i].transform.gameObject.GetComponent<BoxCollider>().enabled = true;
+        }
+
         ObjectList[i].SetActive(true);
     }
 }

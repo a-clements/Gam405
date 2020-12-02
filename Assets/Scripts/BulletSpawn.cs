@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class creates a pool of bullets. When the function called Shoot is triggered from the PlayerMove class, the position and rotation are set so match the position
+/// and rotation of the game object this class is attached to. A force is then applied to move the bullet forward. The Shoot function is based on a timer set at design time.
+/// </summary>
 public class BulletSpawn : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private GameObject Bullet;
     [SerializeField] private int BulletPool = 1;
     [SerializeField] float BulletSpeed = 16.0F;

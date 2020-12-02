@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This is a very simple class that disables the object upon colliding with another object that is tagged as Enemy. The update function limits the distance the bullet
+/// object can travel before being disabled.
+/// </summary>
 public class Bullet : MonoBehaviour
 {
     public float Distance;

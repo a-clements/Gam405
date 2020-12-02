@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Player : PlayerAttributes
 {
+    /// <summary>
+    /// This script inherits from PlayerAttributes. The OnTriggerExit function allows the player to wrap around the play area. That is to say that if the player exits from
+    /// the bottom of the play area, it will reappear at the top of the play area. Likewise if the player exits from the left side of the play area, they will reappear
+    /// on the right side of the play area. the Respawn function resets the position of the player to 0,0,0 and cancels out any physics operations.
+    /// This Respawn function also enables the MeshRenderer, CapsuleCollider, and PlayerMove components.
+    /// </summary>
     public Rigidbody rb;
-    private Transform ThisTransform;
+    public Transform ThisTransform;
     private Vector3 Position;
-    [SerializeField] float PlayerSpeed = 128.0F;
-    private BulletSpawn BulletSpawn;
+    public float PlayerSpeed = 128.0F;
+    public BulletSpawn BulletSpawn;
     public InGameUI UI;
-    [SerializeField] private float RespawnTimer = 5.0F;
+    [SerializeField] private float RespawnTimer = 1.0F;
 
     private void Start()
     {
@@ -20,40 +26,6 @@ public class Player : PlayerAttributes
         UI = FindObjectOfType<InGameUI>();
         UI.NextLevel.text = NextLevel.ToString();
         UI.Level.text = Level.ToString();
-    }
-
-    private void Update()
-    {
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            rb.AddTorque(ThisTransform.forward * PlayerSpeed * Time.deltaTime);
-        }
-
-        if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            rb.AddTorque(-ThisTransform.forward * PlayerSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-        {
-            if(rb.velocity.y < 10.0f)
-            {
-                rb.AddForce(ThisTransform.up * PlayerSpeed * Time.deltaTime, ForceMode.Force);
-            }
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            if (rb.velocity.y > -10.0f)
-            {
-                rb.AddForce(ThisTransform.up * -PlayerSpeed * Time.deltaTime, ForceMode.Force);
-            }
-        }
-
-        if(Input.GetKey(KeyCode.Space))
-        {
-            BulletSpawn.Shoot();
-        }
     }
 
     private void OnTriggerExit(Collider TriggerInfo)
@@ -81,10 +53,13 @@ public class Player : PlayerAttributes
         ThisTransform.localRotation = Quaternion.identity;
         ThisTransform.position = Vector3.zero;
         rb.velocity = Vector3.zero;
-        
+        rb.angularVelocity = Vector3.zero;
+
         yield return new WaitForSeconds(RespawnTimer);
 
-        ThisTransform.gameObject.SetActive(true);
+        ThisTransform.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        ThisTransform.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        ThisTransform.gameObject.GetComponent<PlayerMove>().enabled = true;
 
         yield return null;
     }
