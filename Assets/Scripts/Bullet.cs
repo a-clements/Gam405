@@ -27,10 +27,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider TriggerInfo)
     {
-        if (TriggerInfo.tag == "Enemy")
+        switch(TriggerInfo.tag)
         {
-            this.gameObject.SetActive(false);
-            TriggerInfo.gameObject.SetActive(false);
+            case "Enemy":
+                this.gameObject.SetActive(false);
+                TriggerInfo.gameObject.SetActive(false);
+                break;
         }
     }
 
