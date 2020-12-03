@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2421868629398991107}
   - component: {fileID: 3764535957130052287}
   m_Layer: 0
-  m_Name: slowdown
+  m_Name: AsteroidTwo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2e9749957076b4ea54a3db095c7f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: points
+  Type: Points
   PointValue: 50
   Speed: 5
