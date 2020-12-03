@@ -1,92 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Bullet" Collapsed="true">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+  <Class Name="Bullet">
+    <Position X="10.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAABAQAAAAAAACEA=</HashCode>
       <FileName>Assets\Scripts\Bullet.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BulletSpawn" Collapsed="true">
-    <Position X="10" Y="0.5" Width="1.5" />
+  <Class Name="BulletSpawn">
+    <Position X="10.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAEAAECABAACAAAAAAAAAAAAAAgAAAAAAAAQAEA=</HashCode>
       <FileName>Assets\Scripts\BulletSpawn.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ButtonEvents" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.75" Y="0.5" Width="1.5" />
+  <Class Name="ButtonEvents" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\ButtonEvents.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Credits" Collapsed="true">
-    <Position X="5.75" Y="2" Width="1.5" />
+  <Class Name="Credits">
+    <Position X="5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAACAAAAAAAAAAAASAAAAAAACEAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Credits.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CreditsAttributes" Collapsed="true">
-    <Position X="4.75" Y="0.5" Width="1.5" />
+  <Class Name="CreditsAttributes">
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAEAAAAIAAAAAIAAAAAgAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\CreditsAttributes.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="InGameUI" Collapsed="true">
-    <Position X="8.25" Y="1.5" Width="1.5" />
+  <Class Name="InGameUI">
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAAgAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAEAAAAAAgAAAAAAAAAAAAAAAADAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\InGameUI.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Item" Collapsed="true">
-    <Position X="3.5" Y="5" Width="1.5" />
+  <Class Name="Item">
+    <Position X="6.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAEAAAAAAAAAAAAAIAAQAAAAQAACEA=</HashCode>
       <FileName>Assets\Scripts\Item.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ItemAttributes" Collapsed="true">
-    <Position X="3.5" Y="3.5" Width="1.5" />
+  <Class Name="ItemAttributes">
+    <Position X="6.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAgABAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\ItemAttributes.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainMenu" Collapsed="true">
-    <Position X="3.5" Y="2" Width="1.5" />
+  <Class Name="MainMenu">
+    <Position X="2.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\MainMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Player" Collapsed="true">
-    <Position X="0.5" Y="2" Width="1.5" />
+  <Class Name="Player">
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAEAACAAAAAkAAAAAABABABAAIAAAAAAAAAAEAA=</HashCode>
+      <HashCode>ABAAgAEAACAAAAAkAAAAAABABABAAIAAAAAAAAAAGAA=</HashCode>
       <FileName>Assets\Scripts\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PlayerAttributes" Collapsed="true">
+  <Class Name="PlayerAttributes">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAAgAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAEAAAAAAgAAAAAAAAAAAAAAAADAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\PlayerAttributes.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PlayerMove" Collapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+  <Class Name="PlayerMove">
+    <Position X="0.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\PlayerMove.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Spawner" Collapsed="true">
-    <Position X="10" Y="1.5" Width="1.5" />
+  <Class Name="Spawner">
+    <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>MAQAAAA0AAAAAAAAAEkAAQAAAAAAAAAEAAAAABAAAEA=</HashCode>
       <FileName>Assets\Scripts\Spawner.cs</FileName>
