@@ -22,11 +22,13 @@ public class Item: ItemAttributes
     private Player Player;
     private Rigidbody rb;
     private Transform ThisTransform;
+    private AudioSource Audio;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         ThisTransform = GetComponent<Transform>();
+        Audio = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -55,9 +57,13 @@ public class Item: ItemAttributes
                     Player.NextLevel = Player.NextLevel * Player.Level;
                     Player.UI.NextLevel.text = Player.NextLevel.ToString();
                 }
+
+                Audio.Play();
+                
                 break;
 
             case "Player":
+                Player.gameObject.GetComponent<AudioSource>().Play();
                 Player.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 Player.gameObject.GetComponent<CapsuleCollider>().enabled = false;
                 Player.gameObject.GetComponent<PlayerMove>().enabled = false;
